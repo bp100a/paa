@@ -1,0 +1,309 @@
+<?php
+require 'utilities.php'; session_start();
+
+if (isset($_SESSION['ratingsession']))
+{
+	$sessionid = $_SESSION['ratingsession'];
+
+}
+else
+{
+	$sessionid = $_POST['session'];
+
+	$_SESSION['ratingsession'] = $sessionid;
+}
+
+
+$userid = $_SESSION['thisuser'];
+
+
+
+
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/htm14/loose.dtd">
+
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset-iso-8859-1">
+<link rel="stylesheet" type="text/css" href="mystyles.css" />
+<title>Build New Rubric</title>
+</head>
+
+<body>
+<table border="0" width="95%">
+  <tr>
+    <td colspan="2" width="95%" align="left"
+     type="text/css">
+     <img src="njit_tag.jpg" width="233" height="60" border="0" />
+     </td>
+  </tr>
+</table>
+
+
+
+<table border="0" width="95%">
+  <tr>
+    <td width="95%" colspan="2"align="center">
+        <h1>Build a New Rubric</h1>
+    </td>
+  </tr>
+</table>
+
+<?php
+
+
+$cxn = connect_to_db();
+$user = "root";
+$password = "gewbgttl";
+$dbase = "mydb";
+
+$cxn = mysqli_connect ($host,$user,$password,$dbase)
+	or die ("couldn't connect to database");
+
+	
+$avail_comps = "SELECT competencyid, compname, compdescription FROM competency
+		ORDER BY compname ASC";
+$getavail_comps = mysqli_query($cxn,$avail_comps)
+		or die(mysqli_error($cxn));
+
+
+
+echo "<table border=\"2\" width=\"95%\" cellspacing=\"10\">";
+echo "<tr>";
+echo "<td width=\"
+
+while($setcomp = mysqli_fetch_row($getavail_comps))
+{
+	$compid = $setcomp[0];
+	$compname = $setcomp[1];
+	$compdesc = $setcomp[2];
+
+
+
+
+
+
+
+
+
+
+echo "<table border=\"0\" width=\"95%\" cellspacing=\"10\">";
+echo "<tr>";
+echo "<td colspan=\"3\" width=\"95%\" height=\"100\">";
+echo "</td>";
+echo "</tr>";
+
+echo "<tr>";
+echo "<td width=\"45%\" align=\"right\" height=\"50\">";
+echo "<form method=\"POST\" action=\"build_rubric.php\">";
+echo "<select name=\"student\">";
+echo "<option value=\"NULL\">Select a Student to Rate</option>\n";
+
+
+
+		{
+		
+			echo "<option value=".$studentid.">".$njitid.$tab.$last.", ".$first."</option>\n";
+		}
+	
+	}
+}
+
+echo "</select>";
+echo "<br />";
+echo "<input type=\"submit\" value=\"Rate Student\">";
+echo "</td>";
+echo "<td width=\"40%\" align=\"left\" height=\"50\" type=\"text/css\"
+	style=\"background-color: #669966; color: white; font-weight: bolder;\">";
+echo "Select a new student to rate";
+echo "</td>";
+echo "<td width=\"10%\">";
+echo "</td>";
+echo "</tr>";
+
+echo "</form>";	
+
+echo "<tr>";
+
+
+
+echo "<form method=\"POST\" action=\"build_rated_rubric.php\">";
+
+$getratedlist = "SELECT StudentID FROM portfoliorating WHERE RatingSessionID = '".$sessionid."' AND 
+		UserID = '".$userid."'";
+$dogetrated = mysqli_query($cxn,$getratedlist)
+		or die(mysqli_error($cxn));
+$getnumrated = mysqli_num_rows($dogetrated);
+
+if ($getnumrated < 1)
+{
+
+
+	echo "<td width=\"45%\" align=\"right\" height=\"50\">";
+
+	echo "You have not yet rated any students in this rating session.";
+	echo "</td>";
+}
+else
+{
+
+	echo "<td width=\"45%\" align=\"right\" height=\"50\">";
+	echo "<select name=\"ratedstudent\">";
+	echo "<option value=\"NULL\">Select a Student to Review</option>\n";
+
+	while ($setratedlist = mysqli_fetch_row($dogetrated))
+	{
+		
+		$ratedstudentid = $setratedlist[0];
+
+		$getratedinfo = "SELECT FirstName, LastName, NJITStudentID FROM student WHERE 
+				StudentID = '".$ratedstudentid."'";
+		$dogetratedinfo = mysqli_query($cxn,$getratedinfo)
+				or die(mysqli_error($cxn));
+
+		$setratedinfo = mysqli_fetch_row($dogetratedinfo);
+		$firstname = $setratedinfo[0];
+		$lastname = $setratedinfo[1];
+		$njitida = $setratedinfo[2];
+
+		echo "<option value=".$ratedstudentid.">".$njitida.$tab.$lastname.", ".$firstname."</option>\n";
+	}
+	echo "</select>";
+	echo "<br />";
+	echo "<input type=\"submit\" value=\"Modify Student Scores\">";
+	echo "</td>";
+}
+
+echo "<td width=\"40%\" align=\"left\" height=\"50\" type=\"text/css\"
+	style=\"background-color: #669966; color: white; font-weight: bolder;\">";
+echo "Modify the scores you have already given a student";
+echo "</td>";
+echo "<td width=\"10%\">";
+echo "</td>";
+echo "</tr>";
+echo "</form>";	
+
+/*Here we'll check to see if there are any students
+ * assigned to this rater for adjudication and let them
+ * select that option.
+ */
+
+echo "<form method=\"POST\" action=\"build_adjudication_rubric.php\">";
+
+$getadjlist = "SELECT studenttoberated.StudentID FROM studenttoberated, portfoliorating
+		WHERE studenttoberated.RatingSessionID = '".$sessionid."'
+		AND portfoliorating.RatingSessionID = '".$sessionid."'
+		AND studenttoberated.AdjReqd = 1
+		AND studenttoberated.AdjDone = 0
+		AND studenttoberated.StudentID = portfoliorating.StudentID
+		AND portfoliorating.UserID = '".$userid."'
+		AND portfoliorating.IsAdjudicator = 1";
+$dogetadjlist = mysqli_query($cxn,$getadjlist)
+		or die(mysqli_error($cxn));
+$getadjcount = mysqli_num_rows($dogetadjlist);
+
+
+if ($getadjcount < 1)
+{
+
+
+	echo "<td width=\"45%\" align=\"right\" height=\"50\">";
+
+	echo "You have not been assigned to adjudicate any students.";
+	echo "</td>";
+}
+else
+{
+
+	echo "<td width=\"45%\" align=\"right\" height=\"50\">";
+	echo "<select name=\"adjstudent\">";
+	echo "<option value=\"NULL\">Select a Student to Adjudicate</option>\n";
+
+	while ($setadjlist = mysqli_fetch_row($dogetadjlist))
+	{
+		
+		$adjstudentid = $setadjlist[0];
+
+		$getadjinfo = "SELECT FirstName, LastName, NJITStudentID FROM student WHERE 
+				StudentID = '".$adjstudentid."'";
+		$dogetadjinfo = mysqli_query($cxn,$getadjinfo)
+				or die(mysqli_error($cxn));
+
+		$setadjinfo = mysqli_fetch_row($dogetadjinfo);
+		$adjfirstname = $setadjinfo[0];
+		$adjlastname = $setadjinfo[1];
+		$adjnjitida = $setadjinfo[2];
+
+		echo "<option value=".$adjstudentid.">".$adjnjitida.$tab.$adjlastname.", ".$adjfirstname."</option>\n";
+	}
+	echo "</select>";
+	echo "<br />";
+	echo "<input type=\"submit\" value=\"Adjudicate Student\">";
+	echo "</td>";
+}
+
+echo "<td width=\"40%\" align=\"left\" height=\"50\" type=\"text/css\"
+	style=\"background-color: #669966; color: white; font-weight: bolder;\">";
+echo "Adjudicate a student portfolio that has discrepant scores";
+echo "</td>";
+echo "<td width=\"10%\">";
+echo "</td>";
+echo "</tr>";
+echo "</form>";	
+
+
+$getadminstatus = "SELECT IsAdmin FROM user WHERE UserID = '".$userid."'";
+$dogetadminstatus = mysqli_query($cxn,$getadminstatus)
+		or die(mysqli_error($cxn));
+$setadminstatus = mysqli_fetch_row($dogetadminstatus);
+$adminstatus = $setadminstatus[0];
+
+if ($adminstatus == 1)
+{
+
+	echo "<tr>";
+	echo "<td width=\"45%\" align=\"right\" height=\"50\">";
+	echo "<form method=\"POST\" action=\"admin.php\">";
+
+	echo "<input type=\"submit\" value=\"Return to Administrator page\">";
+	echo "</td>";
+	echo "<td width=\"40%\" align=\"left\" height=\"50\" type=\"text/css\"
+		style=\"background-color: #669966; color: white; font-weight: bolder;\">";
+	echo "Return to the Administrator page";
+	echo "</td>";
+	echo "<td width=\"10%\">";
+	echo "</td>";
+	echo "</tr>";
+	echo "</form>";		
+}
+
+
+echo "<tr>";
+echo "<td width=\"45%\" align=\"right\" height=\"50\">";
+echo "<form method=\"POST\" action=\"logout.php\">";
+echo "<input type=\"submit\" value=\"Logout\">";
+echo "</td>";
+echo "</form>";	
+echo "<td width=\"40%\" align=\"left\" height=\"50\" type=\"text/css\"
+	style=\"background-color: #669966; color: white; font-weight: bolder\">";
+echo "Log out of the rating session";
+echo "</td>";
+echo "<td width=\"10%\">";
+echo "</td>";
+echo "</tr>";
+echo "</table>";
+	
+
+
+
+
+?>
+
+
+</body>
+</html>

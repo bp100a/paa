@@ -1,0 +1,20 @@
+<style type="text/css">
+
+h1 {font-family: "trebuchet ms", verdana, geneva, arial, helvetica, sans-serif;
+    font-size: 32px; line-height: 34px;}
+
+h2 {font-family: verdana, geneva, arial, helvetica, sans-serif;
+    font-size: 18px; line-height: 24px;}
+
+h3 {font-family: Verdana, geneva, arial, helvetica, sans-serif;
+    font-size: 12px; line-height 24px;}
+
+body {font-family: arial, helvetica, sans-serif;
+      font-size: 14px; line-height: 16px;}
+
+td.header {background-color: #CCCCCC; font-weight: bolder;}
+
+td.compcell {font-family: arial, helvetica, sans-serif;
+		font-size: 11px; line-height: 12px;
+		background-color: #CCFFCC; font-weight: bolder;}
+

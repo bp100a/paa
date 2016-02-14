@@ -1,0 +1,38 @@
+SELECT * 
+FROM studenttoberated stbr, portfoliorating p
+WHERE stbr.ratingsessionid =32
+AND p.ratingsessionid = stbr.ratingsessionid
+AND stbr.studentid = p.studentid
+AND p.userid =87
+
+SELECT s.studentid, s.njitstudentid, s.firstname, s.lastname
+FROM student s, studenttoberated stbr
+WHERE stbr.ratingsessionid =32
+AND stbr.studentid = s.studentid
+AND stbr.studentid NOT 
+IN (
+
+SELECT stbr.studentid
+FROM studenttoberated stbr, portfoliorating p
+WHERE stbr.ratingsessionid =32
+AND p.ratingsessionid = stbr.ratingsessionid
+AND stbr.studentid = p.studentid
+AND p.userid =87
+)
+
+SELECT s.studentid, s.njitstudentid, s.firstname, s.lastname
+FROM student s, studenttoberated stbr
+WHERE stbr.ratingsessionid =32
+AND stbr.studentid = s.studentid
+AND stbr.adjreqd = 1
+AND stbr.adjdone = 0
+AND stbr.studentid NOT 
+IN (
+
+SELECT stbr.studentid
+FROM studenttoberated stbr, portfoliorating p
+WHERE stbr.ratingsessionid =32
+AND p.ratingsessionid = stbr.ratingsessionid
+AND stbr.studentid = p.studentid
+AND p.userid =87
+)

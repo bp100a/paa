@@ -1,0 +1,29 @@
+To find all portfolioratings for a given student:
+
+SELECT portfoliorating.portfolioratingid, portfoliorating.studentid, portfoliorating.userid, 
+sessionscoring.competencyid, sessionscoring.score
+FROM portfoliorating, sessionscoring
+WHERE portfoliorating.studentid = 922
+AND portfoliorating.portfolioratingid = sessionscoring.portfolioratingid
+ORDER BY portfoliorating.portfolioratingid
+
+To get the scores to be deleted:
+
+SELECT * 
+FROM  `sessionscoring` 
+WHERE portfolioratingid =1127
+
+
+SELECT studenttoberated.studentid, portfoliorating.portfolioratingid
+FROM studenttoberated, portfoliorating
+WHERE studenttoberated.ratingsessionid =33
+AND studenttoberated.studentid = portfoliorating.studentid
+AND studenttoberated.studentid =920
+
+SELECT portfoliorating.studentid, portfoliorating.portfolioratingid, sessionscoring.competencyid, sessionscoring.score
+FROM portfoliorating, sessionscoring
+WHERE portfoliorating.ratingsessionid =33
+AND portfoliorating.portfolioratingid = sessionscoring.portfolioratingid
+AND portfoliorating.studentid =920
+
+

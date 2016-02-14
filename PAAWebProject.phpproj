@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>PAAWebProject</Name>
+    <ProjectGuid>{4389b852-e4de-4592-8d2d-33a0ade5fc1e}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <OutputType>Library</OutputType>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="add_new_student.php" />
+    <Compile Include="adjudication_choices.php" />
+    <Compile Include="adjudicator.php" />
+    <Compile Include="adj_clean_up.php" />
+    <Compile Include="admin.php" />
+    <Compile Include="admin_choice.php" />
+    <Compile Include="admin_manage.php" />
+    <Compile Include="admin_monitor.php" />
+    <Compile Include="assign_adjudicator.php" />
+    <Compile Include="begin_assessment.php" />
+    <Compile Include="build_adjudication_rubric.php" />
+    <Compile Include="build_missing_rubric.php" />
+    <Compile Include="build_new_rubric.txt" />
+    <Compile Include="build_rated_rubric.php" />
+    <Compile Include="build_rubric.php" />
+    <Compile Include="clean_up.php" />
+    <Compile Include="complete_deactivation.php" />
+    <Compile Include="complete_deactivation.php.txt" />
+    <Compile Include="create_new_rating_session.php" />
+    <Compile Include="create_rating_session.php" />
+    <Compile Include="create_scores_table.php" />
+    <Compile Include="create_session.php" />
+    <Compile Include="create_student.php" />
+    <Compile Include="Davidas_mods.sql" />
+    <Compile Include="deactivate_sessions.php" />
+    <Compile Include="delete_student.php" />
+    <Compile Include="find_adjudications.php" />
+    <Compile Include="find_incomplete_ratings.php" />
+    <Compile Include="get_rubric_info.php" />
+    <Compile Include="good_admin.php" />
+    <Compile Include="good_build_rubric.php" />
+    <Compile Include="good_create_scores_table.php" />
+    <Compile Include="good_find_incomplete_ratings.php" />
+    <Compile Include="good_read_csv_file.php.txt" />
+    <Compile Include="good_student_info.php" />
+    <Compile Include="good_write_csv_file.php" />
+    <Compile Include="hum_101_rubric.html" />
+    <Compile Include="hum_352_rubric.html" />
+    <Compile Include="index.html" />
+    <Compile Include="index.php" />
+    <Compile Include="join_session.php" />
+    <Compile Include="ListWithURLs.csv" />
+    <Compile Include="login.php" />
+    <Compile Include="logout.php" />
+    <Compile Include="logs.php" />
+    <Compile Include="May2013HUM102List.csv" />
+    <Compile Include="May2013HUM352List.csv" />
+    <Compile Include="MSPTC_rubric.html" />
+    <Compile Include="myindex.html" />
+    <Compile Include="mysql_test.php" />
+    <Compile Include="mysql_test1.php" />
+    <Compile Include="mysql_test2.php" />
+    <Compile Include="mysql_test3.php" />
+    <Compile Include="mystyles.css" />
+    <Compile Include="New Queries for Adjudication.txt" />
+    <Compile Include="newadmin.php" />
+    <Compile Include="new_student_info.php" />
+    <Compile Include="njit_tag.jpg" />
+    <Compile Include="rater_actions.php" />
+    <Compile Include="rater_choice.php" />
+    <Compile Include="rater_selection.php" />
+    <Compile Include="rating_session_admin.php" />
+    <Compile Include="read_csv_file.php" />
+    <Compile Include="read_rating_list_file.php" />
+    <Compile Include="register.php" />
+    <Compile Include="remove_student.php" />
+    <Compile Include="report_by_adjudication.php" />
+    <Compile Include="report_by_rater.php" />
+    <Compile Include="report_by_student.php" />
+    <Compile Include="report_by_variable.php" />
+    <Compile Include="report_choice.php" />
+    <Compile Include="return_from_adjudication_report.php" />
+    <Compile Include="return_from_rater_scores.php" />
+    <Compile Include="return_from_student_scores.php" />
+    <Compile Include="return_from_variable_scores.php" />
+    <Compile Include="review_adjudications.php" />
+    <Compile Include="rubric_fns.php" />
+    <Compile Include="Sample queries.txt" />
+    <Compile Include="select_csv_file.php" />
+    <Compile Include="select_rater.php" />
+    <Compile Include="select_rating_list_file.php" />
+    <Compile Include="select_report.php" />
+    <Compile Include="select_session_for_export.php" />
+    <Compile Include="show_adjudication_scores.php" />
+    <Compile Include="show_rater_scores.php" />
+    <Compile Include="show_student_scores.php" />
+    <Compile Include="show_variable.php" />
+    <Compile Include="show_variable_scores.php" />
+    <Compile Include="simplecsvimport.php" />
+    <Compile Include="Spring_2015_List.csv" />
+    <Compile Include="stable_build_rubric.php" />
+    <Compile Include="store_adjudications.php" />
+    <Compile Include="store_adjudicators.php" />
+    <Compile Include="store_ratings.php" />
+    <Compile Include="students_to_be_adjudicated.php" />
+    <Compile Include="student_fns.php" />
+    <Compile Include="student_info.php" />
+    <Compile Include="testfall2012.csv" />
+    <Compile Include="TestwitURLs.csv" />
+    <Compile Include="TestwitURLsSpring2013.csv" />
+    <Compile Include="unused_show_adjudication_scores.php" />
+    <Compile Include="update_ratings.php" />
+    <Compile Include="user_auth_fns.php" />
+    <Compile Include="validate_student.php" />
+    <Compile Include="variable_report.php" />
+    <Compile Include="write_csv_file.php" />
+    <Compile Include="write_file.php" />
+  </ItemGroup>
+</Project>
