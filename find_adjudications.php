@@ -1,5 +1,5 @@
 <?php
-require 'utilities.php'; session_start();
+require_once 'utilities.php'; session_start();
 
 /* Find Adjudications
  * This module checks the student scores

@@ -1,6 +1,6 @@
 <?php
 
-require 'utilities.php'; session_start();
+require_once 'utilities.php'; session_start();
 
 function filled_out($form_vars)
 {

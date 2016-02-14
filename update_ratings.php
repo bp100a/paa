@@ -1,5 +1,5 @@
 <?php
-require 'utilities.php'; session_start();
+require_once 'utilities.php'; session_start();
 
 $portfolioratingid = $_SESSION['portfolioratingid'];
 $rubricid = $_SESSION['rubricid'];

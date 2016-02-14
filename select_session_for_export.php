@@ -1,6 +1,6 @@
 <?php
 
-require 'utilities.php'; session_start();
+require_once 'utilities.php'; session_start();
 
 /* Select Session to Write Scores
  * This module lets the admin

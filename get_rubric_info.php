@@ -1,6 +1,6 @@
 <?php
 
-require 'utilities.php'; session_start();
+require_once 'utilities.php'; session_start();
 
 function get_rubric_name()
 

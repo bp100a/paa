@@ -1,5 +1,5 @@
 <?php
-require 'utilities.php'; session_start();
+require_once 'utilities.php'; session_start();
 
 /* Web-Based Portfolio Assessment
  * This module builds the rubric

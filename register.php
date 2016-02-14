@@ -1,9 +1,7 @@
 <?php
+require_once 'utilities.php'; /* consolidate DB connection information */
 
-
-require 'utilities.php'; /* consolidate DB connection information */
-
-require 'utilities.php'; session_start();
+session_start();
 
 // Create short names for variables
 
@@ -104,12 +102,10 @@ $cxn = connect_to_db();
 
 
 
-$getuserid = "SELECT UserID FROM user WHERE UserName ='".$username."'";
+$getuserid = "SELECT UserID, Password FROM user WHERE UserName ='".$username."'";
 
 $result1 = mysqli_query($cxn,$getuserid);
-
 $row_cnt = mysqli_num_rows($result1);
-
 
 if ($row_cnt < 1)
 {
@@ -151,6 +147,10 @@ else
 {
 	$row1 = mysqli_fetch_row($result1);
 	$userid = $row1[0];
+    $pwd = $row1[1];
+
+    if (".$pwd" <> $pwd)
+        echo "Invalid password or username";
 
 	//update existing user record
 	$updateuser = "UPDATE user SET LastLoginTime=CURDATE(), IsActive=1 WHERE UserID = '".$userid."'";

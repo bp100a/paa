@@ -1,6 +1,6 @@
 <?php
-require 'utilities.php';
-require 'utilities.php'; session_start();
+require_once 'utilities.php';
+session_start();
 
 
 

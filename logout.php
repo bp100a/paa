@@ -1,5 +1,5 @@
 <?php
-require 'utilities.php'; session_start();
+require_once 'utilities.php'; session_start();
 $userid = $_SESSION['thisuser'];
 
 $cxn = connect_to_db();

@@ -1,8 +1,8 @@
 <?php
 
-require 'utilities.php'; /* consolidate DB connection information */
+require_once 'utilities.php'; /* consolidate DB connection information */
 
-require 'utilities.php'; session_start();
+session_start();
 ?>
 
 
@@ -70,6 +70,10 @@ if (isset($_SESSION['username']))
     echo "<input type=\"text\" name=\"username\" value=\"".$username."\">";
     echo "</td>";
     unset($_SESSION['username']);
+
+    echo "<input type=\"text\" name=\"pwd\" value=\"".$pwd."\">";
+    echo "</td>";
+    unset($_SESSION['pwd']);
 }
 else
 {
@@ -80,6 +84,15 @@ else
     echo "<td width=\"48%\" align=\"left\" valign=\"center\">";
     echo "<input type=\"text\" name=\"username\" />";
     echo "</td>";
+
+    echo "<tr>";
+	echo "    <td width=\"37%\" align=\"right\" valign=\"center\">";
+    echo " Password:";
+    echo "</td>";
+    echo "<td width=\"48%\" align=\"left\" valign=\"center\">";
+    echo "<input type=\"password\" name=\"pwd\" />";
+    echo "</td>";
+
 }
 ?>
 
