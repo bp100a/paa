@@ -28,14 +28,18 @@ session_start();
                 </td>
             </tr>
             <tr>
-                <td colspan="2" width="95%" align="center" valign="center">
-                    <h1>Portfolio Assessment Login</h1>
+                <td colspan="2" width="95%" align="center" valign="middle">
+                    <h1><b>Supervised</b> Portfolio Assessment Login</h1>
                 </td>
             </tr>
             <tr>
-                <td colspan="2" width="95%" align="center" valign="center" height="200"></td>
+                <td colspan="2" width="95%" align="center" valign="middle" height="200"></td>
             </tr>
-
+            <tr>
+                <td>
+                    <h2>Please have an administrator login </h2>
+                </td>
+            </tr>
 
             <?php
 /* If the session username is set at this point,
@@ -54,7 +58,7 @@ if (isset($_SESSION['username']))
 	echo "</tr>";
 	echo "  <tr>";
 	echo "    <td width=\"37%\" align=\"right\" valign=\"center\">";
-     echo "Username:";
+     echo "Admin Username:";
     echo "</td>";
     echo "<td width=\"48%\" align=\"left\" valign=\"center\">";
     echo "<input type=\"text\" name=\"username\" value=\"".$username."\">";
@@ -67,17 +71,17 @@ if (isset($_SESSION['username']))
 else
 {
 	echo "<tr>";
-	echo "    <td width=\"37%\" align=\"right\" valign=\"middle\">";
+	echo "    <td width=\"37%\" align=\"right\" valign=\"center\">";
     echo " Username:";
     echo "</td>";
-    echo "<td width=\"48%\" align=\"left\" valign=\"middle\">";
-    echo "<input type=\"text\" name=\"username\" autofocus/>";
+    echo "<td width=\"48%\" align=\"left\" valign=\"center\">";
+    echo "<input type=\"text\" name=\"username\" />";
     echo "</td>";
     echo "<tr>";
-	echo "    <td width=\"37%\" align=\"right\" valign=\"middle\">";
+	echo "    <td width=\"37%\" align=\"right\" valign=\"center\">";
     echo " Password:";
     echo "</td>";
-    echo "<td width=\"48%\" align=\"left\" valign=\"middle\">";
+    echo "<td width=\"48%\" align=\"left\" valign=\"center\">";
     echo "<input type=\"password\" name=\"pwd\" />";
     echo "</td>";
 }
@@ -86,13 +90,13 @@ else
             </tr>
             <tr>
                 <td width="37%"></td>
-                <td width="48%" align="left" valign="middle">
+                <td width="48%" align="left" valign="center">
                     <input type="submit" value="Submit" />
                 </td>
             </tr>
- </table>
-</form>
 
+        </table>
+    </form>
 
 
   

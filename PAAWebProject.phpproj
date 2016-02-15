@@ -57,12 +57,10 @@
     <Compile Include="index.html" />
     <Compile Include="index.php" />
     <Compile Include="join_session.php" />
-    <Compile Include="ListWithURLs.csv" />
     <Compile Include="login.php" />
+    <Compile Include="supervised_login.php" />
     <Compile Include="logout.php" />
     <Compile Include="logs.php" />
-    <Compile Include="May2013HUM102List.csv" />
-    <Compile Include="May2013HUM352List.csv" />
     <Compile Include="MSPTC_rubric.html" />
     <Compile Include="myindex.html" />
     <Compile Include="mysql_test.php" />

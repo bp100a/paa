@@ -4,8 +4,8 @@ require_once 'utilities.php'; /* consolidate DB connection information */
 session_start();
 
 // Create short names for variables
-
 $username=$_POST['username'];
+$f_password=$_POST['pwd'];
 
 
 
@@ -149,8 +149,11 @@ else
 	$userid = $row1[0];
     $pwd = $row1[1];
 
-    if (".$pwd" <> $pwd)
-        echo "Invalid password or username";
+    if ($f_password != $pwd)    // if user doesn't know their password, offer supervised login
+    {
+        header('Location: supervised_login.php');
+        exit;
+    }
 
 	//update existing user record
 	$updateuser = "UPDATE user SET LastLoginTime=CURDATE(), IsActive=1 WHERE UserID = '".$userid."'";
