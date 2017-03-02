@@ -5,7 +5,7 @@
 		$uri = 'http://';
 	}
 	$uri .= $_SERVER['HTTP_HOST'];
-	header('Location: '.$uri.'/paa/login.php');
+	header('Location: '.$uri.'/login.php');
 	exit;
 ?>
 Something is wrong with the WAMP installation :-(
